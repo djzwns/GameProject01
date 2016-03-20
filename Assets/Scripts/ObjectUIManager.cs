@@ -20,30 +20,21 @@ public class ObjectUIManager : MonoBehaviour {
 
     void Update()
     {
-        // 마우스가 눌렸다가 때질 때 실행
+        // 마우스가 눌렸다가 때질 때 실행. 괄호의 0은 왼쪽 클릭을 의미
         if (Input.GetMouseButtonUp(0))
         {
             // 마우스 위치의 오브젝트를 받아옴
             clickedObj = GetClickedObject();
 
-            // 누르면 팝업 시킴.. 하.. 맘에 안든다. 
-            // 담에 오브젝트 많아지면 어케할지 생각좀 해봐야겠따
-            if (clickedObj.Equals(objBox) && !isPop)
+            // 누르면 팝업 시킴.
+            if (clickedObj.Equals(objBox))
             {
-                isPop = true;
-                clickedObj.transform.position = new Vector2(-5.8f, 0f);
-
-            }
-            else if (clickedObj.Equals(objBox) && isPop)
-            {
-                isPop = false;
-                clickedObj.transform.position = new Vector2(-18.8f, 0f);
+                SwitchPop();
             }
         }
     }
 
 
-    // 생성 2016.03.18
     // 클릭된 위치에 있는 오브젝트를 반환해준다.
     private GameObject GetClickedObject()
     {
@@ -63,5 +54,18 @@ public class ObjectUIManager : MonoBehaviour {
         }
         
         return obj;
+    }
+
+    public void SwitchPop()
+    {
+        isPop = !isPop;
+        if (!isPop)
+        {
+            clickedObj.transform.position = new Vector3(-5.8f, 0f, -0.9f);
+        }
+        else
+        {
+            clickedObj.transform.position = new Vector3(-18.8f, 0f, -0.9f);
+        }
     }
 }
