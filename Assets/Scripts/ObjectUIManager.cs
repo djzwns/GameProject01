@@ -31,6 +31,14 @@ public class ObjectUIManager : MonoBehaviour {
             {
                 SwitchPop();
             }
+            if (clickedObj.name == "play")
+            {
+                GameObject.Find("Ball").GetComponent<Rigidbody2D>().gravityScale = 1;
+                GameObject.Find("Ball").GetComponent<Collider2D>().isTrigger = false;
+            }
+            if (clickedObj.name == "reset")
+            {
+            }
         }
     }
 
@@ -61,11 +69,11 @@ public class ObjectUIManager : MonoBehaviour {
         isPop = !isPop;
         if (!isPop)
         {
-            clickedObj.transform.position = new Vector3(-5.8f, 0f, -0.9f);
+            objBox.transform.position = new Vector3(-5.8f, 0f, -0.9f);
         }
         else
         {
-            clickedObj.transform.position = new Vector3(-18.8f, 0f, -0.9f);
+            objBox.transform.position = new Vector3(-18.8f, 0f, -0.9f);
         }
     }
 }
