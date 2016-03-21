@@ -13,7 +13,7 @@ public class ObjectController : MonoBehaviour {
     
     void Update() {
 
-        if (!isDrop && gameObject.name != "Wall" )
+        if (!isDrop && gameObject.tag != "Preview")
         {
             // 내려 두기 전까지 계속 마우스 따라 이동
             gameObject.transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(9.0f);

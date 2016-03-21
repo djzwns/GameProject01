@@ -38,6 +38,7 @@ public class ObjectUIManager : MonoBehaviour {
             }
             if (clickedObj.name == "reset")
             {
+                GetComponent<ObjectManager>().DestroyAllObject();
             }
         }
     }
