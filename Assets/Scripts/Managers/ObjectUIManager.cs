@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ObjectUIManager : MonoBehaviour {
-
+    public GameObject ball;
     public GameObject objBox;
 
     // 메인 카메라를 받아옴
@@ -33,11 +33,11 @@ public class ObjectUIManager : MonoBehaviour {
             }
             if (clickedObj.name == "play")
             {
-                GameObject.Find("Ball").GetComponent<Rigidbody2D>().gravityScale = 1;
-                GameObject.Find("Ball").GetComponent<Collider2D>().isTrigger = false;
+                ball.GetComponent<BallController>().MoveBall();
             }
             if (clickedObj.name == "reset")
             {
+                ball.GetComponent<BallController>().InitBall();
                 GetComponent<ObjectManager>().DestroyAllObject();
             }
         }
@@ -64,6 +64,7 @@ public class ObjectUIManager : MonoBehaviour {
         
         return obj;
     }
+    
 
     public void SwitchPop()
     {

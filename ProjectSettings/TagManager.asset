@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UserObject
   - Preview
+  - Ball
   layers:
   - Default
   - TransparentFX
