@@ -3,21 +3,13 @@ using System.Collections;
 
 public class WallDestroy : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public float destroyTime = 0.2f;
 
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Ball")
         {
-            Destroy(gameObject, 0.2f);
+            Destroy(gameObject, destroyTime);
         }
     }
 }

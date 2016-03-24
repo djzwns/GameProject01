@@ -35,22 +35,7 @@ public class ObjectManager : MonoBehaviour {
     // 클릭된 위치에 있는 오브젝트를 반환해준다.
     private GameObject GetClickedObject()
     {
-        // 마우스가 누른 오브젝트를 저장
-        GameObject obj = null;
-
-        // 마우스 좌표를 받아온다.
-        Ray clickRay = mainCam.ScreenPointToRay(Input.mousePosition);
-
-        // raycast를 이용해 마우스 클릭한 위치를 찾는다.
-        RaycastHit2D hit = Physics2D.GetRayIntersection(clickRay, 10f);
-
-        // 클릭한 오브젝트가 존재하면 obj에 클릭된 오브젝트를 입력해준다.
-        if (hit.collider != null)
-        {
-            obj = hit.collider.gameObject;
-        }
-
-        return obj;
+        return GetComponent<CameraManager>().GetClickedObject();
     }
 
     // 오브젝트 생성 후 생성된 오브젝트 반환
@@ -72,7 +57,7 @@ public class ObjectManager : MonoBehaviour {
         while (destroyObj != null)
         {
             // Destroy 를 쓰려 했는데 바로 지워지지 않고 
-            // 남았다가 Update 종료 시점에서 지워지는 탓에 유니티 먹통 ㅠ
+            // 남았다가 Update 종료 시점에서 지워지는 탓인지 유니티 먹통 ㅠ
             DestroyImmediate(destroyObj); 
             destroyObj = GameObject.FindGameObjectWithTag("UserObject");
         }

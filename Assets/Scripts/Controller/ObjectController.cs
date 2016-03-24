@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ObjectController : MonoBehaviour {
     bool isDrop;
+    bool setObject;
     bool dropPossible;
 
     void Awake()

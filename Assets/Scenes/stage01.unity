@@ -95,8 +95,9 @@ GameObject:
   - 4: {fileID: 461588937}
   - 114: {fileID: 461588936}
   - 114: {fileID: 461588938}
+  - 114: {fileID: 461588939}
   m_Layer: 0
-  m_Name: ObjectManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,6 +141,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c46aac3895d504592fbd3ec1ff70de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &461588939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 461588935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2352cff0256614f80928f0c7f0b34f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camPositionZ: -8
 --- !u!1 &699552889
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08489f7115835843a1a182a39ab289e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyTime: 0.2
 --- !u!4 &1928587445 stripped
 Transform:
   m_PrefabParentObject: {fileID: 481056, guid: 92d3e071f2a87f840b2b54843efeae82, type: 2}
