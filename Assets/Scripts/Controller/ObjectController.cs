@@ -12,8 +12,9 @@ public class ObjectController : MonoBehaviour {
 
     void Awake()
     {
-        clickedObject = false;
+        //rotationCanvas = gameObject.GetComponentInChildren<Canvas>();
         dropPossible = true;
+        clickedObject = false;
         rotationCanvas.enabled = false;
     }
     
@@ -22,6 +23,19 @@ public class ObjectController : MonoBehaviour {
     {
         if (!isDrop && gameObject.tag == "UserObject") { MoveObject(); }
         if (clickedObject) { RotationObject(); }
+
+        if (Input.GetMouseButtonUp(0) && (GetClickedObject().name + "(Clone)") == gameObject.name)
+        {
+            if(!clickedObject)
+                ObjectClickOn();
+            else
+                ObjectClickOff();
+        }
+
+        if (Input.GetMouseButtonUp(0) && (GetClickedObject().name + "(Clone)") != gameObject.name)
+        {
+            ObjectClickOff();
+        }
     }
 
     // 다른 오브젝트와 겹치면 드롭 불가.
@@ -49,25 +63,35 @@ public class ObjectController : MonoBehaviour {
         if (Input.GetMouseButton(0) && dropPossible)
         {
             isDrop = true;
-            clickedObject = true;
         }
     }
 
     // 오브젝트 회전
     void RotationObject()
     {
-        rotationCanvas.enabled = true;
         // 슬라이더 값만큼 z축을 회전시킴 최대 180도
         userObject.transform.rotation = Quaternion.AngleAxis (
-                (rotationCanvas.GetComponentInChildren<Slider>().value / 0.5f) * -180f, 
-                new Vector3( 0, 0, 1f)
-            );
+            (rotationCanvas.GetComponentInChildren<Slider>().value / 0.5f) * -180f, 
+            new Vector3( 0, 0, 1f)
+        );
+    }
 
-        if ( Input.GetMouseButton(0) && GetComponent<CameraManager>().GetClickedObject() == gameObject )
-        {
-            clickedObject = false;
-            rotationCanvas.enabled = false;
-        }
+    // 오브젝트 클릭 on/ off
+    void ObjectClickOn()
+    {
+        clickedObject = true;
+        rotationCanvas.enabled = true;
+    }
+
+    void ObjectClickOff()
+    {
+        clickedObject = false;
+        rotationCanvas.enabled = false;
+    }
+
+    GameObject GetClickedObject()
+    {
+        return GameObject.Find("GameManager").GetComponent<CameraManager>().GetClickedObject();
     }
 
     // 오브젝트를 잡는다.

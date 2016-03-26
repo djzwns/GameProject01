@@ -297,6 +297,10 @@ Prefab:
       propertyPath: m_TagString
       value: Preview
       objectReference: {fileID: 0}
+    - target: {fileID: 11498486, guid: 0339b5d6c9f9c4f4ab04c6458877d743, type: 2}
+      propertyPath: rotationCanvas
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0339b5d6c9f9c4f4ab04c6458877d743, type: 2}
   m_IsPrefabParent: 0
@@ -973,6 +977,10 @@ Prefab:
     - target: {fileID: 174678, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
       propertyPath: m_TagString
       value: Preview
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490488, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
+      propertyPath: rotationCanvas
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
