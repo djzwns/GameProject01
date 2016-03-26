@@ -41,6 +41,7 @@ public class ObjectManager : MonoBehaviour {
     // 오브젝트 생성 후 생성된 오브젝트 반환
     GameObject CreateObject()
     {
+        // 리소스 폴더에서 프리팹을 불러온다.
         GameObject obj = Instantiate(Resources.Load("Prefabs/" + clickObj.name) as GameObject);
 
         obj.GetComponent<ObjectController>().enabled = true;

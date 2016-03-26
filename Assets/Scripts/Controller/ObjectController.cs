@@ -45,7 +45,7 @@ public class ObjectController : MonoBehaviour {
     void MoveObject()
     {
         // 내려 두기 전까지 계속 마우스 따라 이동
-        gameObject.transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(9.0f);
+        gameObject.transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(10.0f);
         if (Input.GetMouseButton(0) && dropPossible)
         {
             isDrop = true;

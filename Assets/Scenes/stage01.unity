@@ -271,23 +271,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22420954, guid: 0339b5d6c9f9c4f4ab04c6458877d743, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22420954, guid: 0339b5d6c9f9c4f4ab04c6458877d743, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22446200, guid: 0339b5d6c9f9c4f4ab04c6458877d743, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22446200, guid: 0339b5d6c9f9c4f4ab04c6458877d743, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22446200, guid: 0339b5d6c9f9c4f4ab04c6458877d743, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 179978, guid: 0339b5d6c9f9c4f4ab04c6458877d743, type: 2}
       propertyPath: m_TagString
@@ -948,23 +948,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22449278, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22449278, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22483404, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22483404, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22483404, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 179690, guid: ec94e8c2f75ecc9479668df550abcbaf, type: 2}
       propertyPath: m_TagString
