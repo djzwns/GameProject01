@@ -41,25 +41,27 @@ public class ObjectManager : MonoBehaviour {
     // 오브젝트 생성 후 생성된 오브젝트 반환
     GameObject CreateObject()
     {
-        GameObject obj = Instantiate(clickObj);
+        GameObject obj = Instantiate(Resources.Load("Prefabs/" + clickObj.name) as GameObject);
 
-        // 태그와 트리거를 바꿔준다.
-        obj.gameObject.tag = "UserObject";
-        obj.GetComponent<Collider2D>().isTrigger = false;
+        obj.GetComponent<ObjectController>().enabled = true;
+        // 트리거를 바꿔준다.
+        obj.GetComponentInChildren<Rigidbody2D>().GetComponent<Collider2D>().isTrigger = false;
 
         return obj;
     }
+
+    // 오브젝트 파괴
     public void DestroyAllObject()
     {
-        GameObject destroyObj = GameObject.FindGameObjectWithTag("UserObject");
+        GameObject destroyObj/* = GameObject.FindGameObjectWithTag("UserObject")*/;
 
         // 오브젝트가 null이 될때 까지 찾아서 다 디스트로이 시킴.
-        while (destroyObj != null)
+        while ((destroyObj = GameObject.FindGameObjectWithTag("UserObject")) != null)
         {
             // Destroy 를 쓰려 했는데 바로 지워지지 않고 
             // 남았다가 Update 종료 시점에서 지워지는 탓인지 유니티 먹통 ㅠ
             DestroyImmediate(destroyObj); 
-            destroyObj = GameObject.FindGameObjectWithTag("UserObject");
+           // destroyObj = GameObject.FindGameObjectWithTag("UserObject");
         }
     }
 }

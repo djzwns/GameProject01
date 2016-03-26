@@ -5,8 +5,7 @@ public class ObjectUIManager : MonoBehaviour {
     public GameObject ball;
     public GameObject objBox;
 
-    // 메인 카메라를 받아옴
-    private Camera mainCam = null;
+
     // object UI의 상태
     private bool isPop = false;
     // 마우스에 눌린 오브젝트
@@ -15,7 +14,6 @@ public class ObjectUIManager : MonoBehaviour {
 
     void Awake()
     {
-        mainCam = Camera.main;
     }
 
     void Update()
