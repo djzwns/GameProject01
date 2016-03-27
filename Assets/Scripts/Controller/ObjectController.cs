@@ -7,6 +7,7 @@ public class ObjectController : MonoBehaviour {
     bool clickedObject;
     bool dropPossible;
 
+    public float rot = 0.5f;
     public GameObject userObject;
     public Canvas rotationCanvas;
 
@@ -69,11 +70,9 @@ public class ObjectController : MonoBehaviour {
     // 오브젝트 회전
     void RotationObject()
     {
-        // 슬라이더 값만큼 z축을 회전시킴 최대 180도
-        userObject.transform.rotation = Quaternion.AngleAxis (
-            (rotationCanvas.GetComponentInChildren<Slider>().value / 0.5f) * -180f, 
-            new Vector3( 0, 0, 1f)
-        );
+        float sliderVal = (rotationCanvas.GetComponentInChildren<Slider>().value - rot) / rot;
+        // 슬라이더 값만큼 z축을 회전시킴 최대 90도
+        userObject.transform.rotation = Quaternion.AngleAxis (sliderVal * 180f, new Vector3( 0, 0, 1f));
     }
 
     // 오브젝트 클릭 on/ off
@@ -98,5 +97,10 @@ public class ObjectController : MonoBehaviour {
     public void HoldObject()
     {
         isDrop = false;
+    }
+
+    public bool IsDrop()
+    {
+        return isDrop;
     }
 }

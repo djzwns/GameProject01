@@ -44,9 +44,9 @@ public class ObjectManager : MonoBehaviour {
         // 리소스 폴더에서 프리팹을 불러온다.
         GameObject obj = Instantiate(Resources.Load("Prefabs/" + clickObj.name) as GameObject);
 
-        obj.GetComponent<ObjectController>().enabled = true;
+        //obj.GetComponent<ObjectController>().enabled = true;
         // 트리거를 바꿔준다.
-        obj.GetComponentInChildren<Rigidbody2D>().GetComponent<Collider2D>().isTrigger = false;
+        obj.GetComponentInChildren<Collider2D>().isTrigger = false;
 
         return obj;
     }
