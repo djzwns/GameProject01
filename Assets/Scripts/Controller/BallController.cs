@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class BallController : MonoBehaviour {
-    Vector3 startPosition;
-    
-	void Awake () {
-        startPosition = gameObject.transform.position;
+    public GameObject startPoint;
+    public GameObject endPoint;
+
+    void Awake () {
+        InitBall();
         //gameObject.GetComponent<Rigidbody2D>().Sleep();
     }
 
@@ -18,9 +19,9 @@ public class BallController : MonoBehaviour {
 
     public void InitBall()
     {
-        gameObject.transform.position = startPosition;
-        gameObject.GetComponent<Rigidbody2D>().Sleep();
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-        gameObject.GetComponent<Collider2D>().isTrigger = true;
+        gameObject.transform.position = startPoint.transform.position;
+        //gameObject.GetComponent<Rigidbody2D>().Sleep();
+        //gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+        //gameObject.GetComponent<Collider2D>().isTrigger = true;
     }
 }

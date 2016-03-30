@@ -2,8 +2,11 @@
 using System.Collections;
 
 public class ObjectUIManager : MonoBehaviour {
-    public GameObject ball;
+    public GameObject pfBall;
     public GameObject objBox;
+
+    GameObject ball;
+    int ballCount = 0;
 
 
     // object UI의 상태
@@ -24,19 +27,22 @@ public class ObjectUIManager : MonoBehaviour {
             // 마우스 위치의 오브젝트를 받아옴
             clickedObj = GetClickedObject();
 
-            // 누르면 팝업 시킴.
+            // 박스 누르면 팝업 시킴.
             if (clickedObj.Equals(objBox))
             {
                 SwitchPop();
             }
-            if (clickedObj.name == "play")
+
+            // 게임 시작버튼 공이 0개일 때만 실행 됨.
+            if (clickedObj.name == "play" && ballCount == 0)
             {
-                ball.GetComponent<BallController>().MoveBall();
+                GamePlay();
             }
-            if (clickedObj.name == "reset")
+
+            // 리셋 버튼
+            else if (clickedObj.name == "reset")
             {
-                ball.GetComponent<BallController>().InitBall();
-                GetComponent<ObjectManager>().DestroyAllObject();
+                GameReset();
             }
         }
     }
@@ -47,7 +53,27 @@ public class ObjectUIManager : MonoBehaviour {
     {        
         return GetComponent<CameraManager>().GetClickedObject();
     }
-    
+
+    // 시작
+    private void GamePlay()
+    {
+        ball = Instantiate(pfBall);
+        ++ballCount;
+        //ball.GetComponent<BallController>().MoveBall();
+    }
+
+    // 리셋
+    private void GameReset()
+    {
+        // 공이 1개 일때 파괴 후 카운트 감소
+        if (ballCount == 1)
+        {
+            Destroy(ball);
+            --ballCount;
+        }
+        //ball.GetComponent<BallController>().InitBall();
+        GetComponent<ObjectManager>().DestroyAllObject();
+    }
 
     public void SwitchPop()
     {
