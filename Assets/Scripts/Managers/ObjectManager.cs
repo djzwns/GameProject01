@@ -6,13 +6,13 @@ public class ObjectManager : MonoBehaviour {
     private GameObject clickObj;
 
     // 메인 카메라를 받아옴
-    private Camera mainCam = null;
+    //private Camera mainCam = null;
     
 
     // Start 함수 앞에서 호출됨.
     void Awake()
     {
-        mainCam = Camera.main;
+        //mainCam = Camera.main;
     }
 
     // Update is called once per frame

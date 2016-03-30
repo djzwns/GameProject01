@@ -68,10 +68,10 @@ public class ObjectUIManager : MonoBehaviour {
         // 공이 1개 일때 파괴 후 카운트 감소
         if (ballCount == 1)
         {
+            ball.GetComponent<BallController>().Reset();
             Destroy(ball);
             --ballCount;
         }
-        //ball.GetComponent<BallController>().InitBall();
         GetComponent<ObjectManager>().DestroyAllObject();
     }
 

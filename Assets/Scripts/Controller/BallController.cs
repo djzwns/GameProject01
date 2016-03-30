@@ -2,26 +2,25 @@
 using System.Collections;
 
 public class BallController : MonoBehaviour {
-    public GameObject startPoint;
-    public GameObject endPoint;
+    GameObject startPoint;
+    GameObject endPoint;
 
     void Awake () {
-        InitBall();
-        //gameObject.GetComponent<Rigidbody2D>().Sleep();
+        Init();
     }
 
-    public void MoveBall()
+    public void Reset()
     {
-        //gameObject.GetComponent<Rigidbody2D>().WakeUp();
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
-        gameObject.GetComponent<Collider2D>().isTrigger = false;
+        startPoint.GetComponent<SpriteRenderer>().enabled = true;
     }
 
-    public void InitBall()
+    void Init()
     {
+        startPoint = GameObject.Find("StartPoint");
+        endPoint = GameObject.Find("EndPoint");
+        // 시작 지점의 좌표를 공에 넣어줌.
         gameObject.transform.position = startPoint.transform.position;
-        //gameObject.GetComponent<Rigidbody2D>().Sleep();
-        //gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-        //gameObject.GetComponent<Collider2D>().isTrigger = true;
+
+        startPoint.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
