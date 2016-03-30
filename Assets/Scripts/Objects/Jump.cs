@@ -2,6 +2,12 @@
 using System.Collections;
 
 public class Jump : MonoBehaviour {
+    public float power = 1;
+
+    void Awake()
+    {
+        gameObject.GetComponent<EdgeCollider2D>().sharedMaterial.bounciness = power;
+    }
 	// Update is called once per frame
 	void Update () {
         // 내려둔 상태라면
