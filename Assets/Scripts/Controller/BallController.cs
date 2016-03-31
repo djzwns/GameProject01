@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;  // SceneManager 사용
 
 public class BallController : MonoBehaviour {
-    GameObject startPoint;
+    GameObject startPoint;  // 공의 시작 위치를 잡아줌
 
     void Awake () {
         Init();
@@ -24,11 +24,13 @@ public class BallController : MonoBehaviour {
         // 시작 지점의 좌표를 공에 넣어줌.
         gameObject.transform.position = startPoint.transform.position;
 
+        // 그림 출력 중단.
         startPoint.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void Reset()
     {
+        // 시작 점 그림 다시 출력
         startPoint.GetComponent<SpriteRenderer>().enabled = true;
     }
 }
