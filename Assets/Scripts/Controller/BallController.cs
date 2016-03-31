@@ -1,26 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour {
     GameObject startPoint;
-    GameObject endPoint;
 
     void Awake () {
         Init();
     }
 
-    public void Reset()
+    void OnTriggerEnter2D(Collider2D end)
     {
-        startPoint.GetComponent<SpriteRenderer>().enabled = true;
+        // 골인지점 도착하면 스테이지 이동~
+        if (end.gameObject.tag == "Finish")
+        {
+            SceneManager.LoadScene("stage01");
+        }
     }
 
     void Init()
     {
         startPoint = GameObject.Find("StartPoint");
-        endPoint = GameObject.Find("EndPoint");
         // 시작 지점의 좌표를 공에 넣어줌.
         gameObject.transform.position = startPoint.transform.position;
 
         startPoint.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void Reset()
+    {
+        startPoint.GetComponent<SpriteRenderer>().enabled = true;
     }
 }
