@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour {
         Ray clickRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         // raycast를 이용해 마우스 클릭한 위치를 찾는다.
-        RaycastHit2D hit = Physics2D.GetRayIntersection(clickRay, 10f);
+        RaycastHit2D hit = Physics2D.GetRayIntersection(clickRay, 10f, -1);
 
         // 클릭한 오브젝트가 존재하면 obj에 클릭된 오브젝트를 입력해준다.
         if (hit.collider != null)

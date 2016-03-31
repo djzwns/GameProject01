@@ -4,6 +4,7 @@ using System.Collections;
 public class ObjectUIManager : MonoBehaviour {
     public GameObject pfBall;
     public GameObject objBox;
+    public GameObject cantClick;
 
     GameObject ball;
     int ballCount = 0;
@@ -17,6 +18,7 @@ public class ObjectUIManager : MonoBehaviour {
 
     void Awake()
     {
+        cantClick.SetActive(false);
     }
 
     void Update()
@@ -59,7 +61,8 @@ public class ObjectUIManager : MonoBehaviour {
     {
         ball = Instantiate(pfBall);
         ++ballCount;
-        //ball.GetComponent<BallController>().MoveBall();
+
+        cantClick.SetActive(true);
     }
 
     // 리셋
@@ -72,6 +75,7 @@ public class ObjectUIManager : MonoBehaviour {
             Destroy(ball);
             --ballCount;
         }
+        cantClick.SetActive(false);
         GetComponent<ObjectManager>().DestroyAllObject();
     }
 
