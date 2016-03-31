@@ -90,6 +90,6 @@ public class Timer : MonoBehaviour {
         timeCycle = 0;
         timeCycleText.text = "초과된 횟수 : 0";
 
-        endPoint.SetActive(false);
+        endPoint.SetActive(true);
     }
 }
