@@ -9,6 +9,7 @@ public class ObjectUIManager : MonoBehaviour {
     GameObject ball;
     int ballCount = 0;
 
+    public float speed = 100f;
 
     // object UI의 상태
     private bool isPop = false;
@@ -47,13 +48,37 @@ public class ObjectUIManager : MonoBehaviour {
                 GameReset();
             }
         }
-    }
 
+        // 오브젝트 창
+        PopUp();
+    }
 
     // 클릭된 위치에 있는 오브젝트를 반환해준다.
     private GameObject GetClickedObject()
     {        
         return GetComponent<CameraManager>().GetClickedObject();
+    }
+
+    private void PopUp()
+    {
+        // 팝업 상태에 따라 움직여준다.-----------------------------------------------------
+        if (!isPop)
+        {
+            // 범위 초과시 포지션 고정
+            if(objBox.transform.position.x <= -18.8f)
+                objBox.transform.position = new Vector3(-18.8f, 0f, -0.9f);
+            else
+                objBox.transform.position += new Vector3(Time.deltaTime * (-speed), 0f, 0f);
+        }
+        else
+        {
+            // 범위 초과시 포지션 고정
+            if(objBox.transform.position.x >= -5.8f)
+                objBox.transform.position = new Vector3(-5.8f, 0f, -0.9f);
+            else
+                objBox.transform.position += new Vector3(Time.deltaTime * speed, 0f, 0f);
+        }
+        // ---------------------------------------------------------------------------------
     }
 
     // 시작
@@ -82,13 +107,15 @@ public class ObjectUIManager : MonoBehaviour {
     public void SwitchPop()
     {
         isPop = !isPop;
-        if (!isPop)
-        {
-            objBox.transform.position = new Vector3(-5.8f, 0f, -0.9f);
-        }
-        else
-        {
-            objBox.transform.position = new Vector3(-18.8f, 0f, -0.9f);
-        }
+        //if (!isPop)
+        //{
+        //    if (objBox.transform.position.x >= -5.8)
+        //        objBox.transform.position += new Vector3(-5.8f * Time.deltaTime, 0f, -0.9f);
+        //}
+        //else
+        //{
+        //    if (objBox.transform.position.x <= -18.8)
+        //        objBox.transform.position += new Vector3(-18.8f * Time.deltaTime, 0f, -0.9f);
+        //}
     }
 }
