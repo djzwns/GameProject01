@@ -7,6 +7,8 @@ public class ObjectController : MonoBehaviour {
     bool clickedObject;
     bool dropPossible;
 
+    GameObject clickObj;
+
     public float rot = 0.5f;
     public GameObject userObject;
     public Canvas rotationCanvas;
@@ -25,15 +27,16 @@ public class ObjectController : MonoBehaviour {
         if (!isDrop && gameObject.tag == "UserObject") { MoveObject(); }
         if (clickedObject) { RotationObject(); }
 
-        if (Input.GetMouseButtonUp(0) && (GetClickedObject().name + "(Clone)") == gameObject.name)
+        if (Input.GetMouseButtonUp(0) && (gameObject.name.Contains(GetClickedObject().name)))
         {
-            if(!clickedObject)
+            clickObj = GetClickedObject();
+            if (!clickedObject)
                 ObjectClickOn();
             else
                 ObjectClickOff();
         }
 
-        if (Input.GetMouseButtonUp(0) && (GetClickedObject().name + "(Clone)") != gameObject.name)
+        if (Input.GetMouseButtonUp(0) && !(gameObject.name.Contains(GetClickedObject().name)))
         {
             ObjectClickOff();
         }
@@ -75,18 +78,25 @@ public class ObjectController : MonoBehaviour {
         userObject.transform.rotation = Quaternion.AngleAxis (sliderVal * 180f, new Vector3( 0, 0, 1f));
     }
 
-    // 오브젝트 클릭 on/ off
+    // 오브젝트 클릭 on/ off 관련 --------------------------------------------
     void ObjectClickOn()
     {
         clickedObject = true;
         rotationCanvas.enabled = true;
     }
 
+    //void ObjectClick(GameObject obj)
+    //{
+    //    clickedObject = !clickedObject;
+    //    obj.GetComponentInChildren<Canvas>().enabled = !(obj.GetComponent<Canvas>().enabled);
+    //}
+
     void ObjectClickOff()
     {
         clickedObject = false;
         rotationCanvas.enabled = false;
     }
+    // -----------------------------------------------------------------------
 
     GameObject GetClickedObject()
     {

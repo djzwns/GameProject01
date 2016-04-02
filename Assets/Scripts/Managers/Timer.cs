@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour {
 	void Update ()
     {
         // 게임에 공이 생기면 카운트 시작.
-        if (GameObject.Find("Ball(Clone)") != null)
+        if (GameObject.FindWithTag("Ball") != null)
         {
             CountTime();
         }

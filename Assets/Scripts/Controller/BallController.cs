@@ -12,7 +12,7 @@ public class BallController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D end)
     {
         // 골인지점 도착하면 스테이지 이동~
-        if (end.gameObject.tag == "Finish")
+        if (end.tag == "Finish")
         {
             SceneManager.LoadScene("stage01");
         }
