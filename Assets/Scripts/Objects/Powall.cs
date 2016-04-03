@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Powall : MonoBehaviour {
-    public float power; // 공의 속도를 결정하는 힘이다.
+    float power; // 공의 속도를 결정하는 힘이다.
+    public float _power;
     
 	// Use this for initialization
 	void Start () {
@@ -14,6 +15,8 @@ public class Powall : MonoBehaviour {
 	}
     void OnCollisionStay2D(Collision2D obj)
     {
+        // 슬라이더에 따른 방향, 힘 등이 변함
+        power = gameObject.GetComponentInParent<ObjectController>().GetPowerObject() * 2f * _power;
         if (obj.gameObject.tag == "Ball")
         {
             // transform.right => x축의 방향으로 힘을 준다.
