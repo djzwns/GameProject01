@@ -357,7 +357,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 108022}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7af0862e0ce310f45811d2eaf11aa93e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -658,7 +658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf14cc7726608e547a42646056a6e24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 1
 --- !u!114 &11491370
 MonoBehaviour:
   m_ObjectHideFlags: 1
