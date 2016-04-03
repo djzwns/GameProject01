@@ -47,7 +47,7 @@ public class ObjectController : MonoBehaviour {
         }
     }
 
-    // 다른 오브젝트와 겹치면 드롭 불가.
+    // 다른 오브젝트와 충돌 여부 체크 -------------------------
     void OnCollisionEnter2D(Collision2D obj)
     {
         if (obj.gameObject.tag == "UserObject")
@@ -63,6 +63,7 @@ public class ObjectController : MonoBehaviour {
         }
             
     }
+    // ---------------------------------------------------------
 
     // 오브젝트를 움직인다.
     void MoveObject()
@@ -84,7 +85,7 @@ public class ObjectController : MonoBehaviour {
     }
 
     // 파워 값을 반환해준다. 범위 ( -0.5 ~ 0.5 )
-    public float GetPowerObject()
+    public float GetPowerObject() 
     {
         return statCanvas.GetComponentsInChildren<Slider>()[POWER].value - value;
     }

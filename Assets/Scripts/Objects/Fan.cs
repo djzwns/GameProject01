@@ -31,8 +31,7 @@ public class Fan : MonoBehaviour {
     {
         if (obj.tag == "Ball")
         {
-            Debug.Log("닿음");
-            print(obj);
+            fanPower = (gameObject.GetComponentInParent<ObjectController>().GetPowerObject() + 0.5f) * 10f;
             obj.GetComponent<Rigidbody2D>().AddForce( direction * fanPower, ForceMode2D.Force);
         }
     }
