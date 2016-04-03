@@ -61,7 +61,7 @@ GameObject:
   - 114: {fileID: 11457102}
   - 114: {fileID: 11477210}
   m_Layer: 0
-  m_Name: RotationCanvas
+  m_Name: StatCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,9 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c576d3ba8dd459469f51b48488dc624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rot: 0.5
   userObject: {fileID: 174678}
-  rotationCanvas: {fileID: 22396490}
+  statCanvas: {fileID: 22396490}
 --- !u!212 &21226686
 SpriteRenderer:
   m_ObjectHideFlags: 1
