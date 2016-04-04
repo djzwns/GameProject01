@@ -28,6 +28,7 @@ GameObject:
   - 68: {fileID: 6808182}
   - 114: {fileID: 11482092}
   - 61: {fileID: 6134004}
+  - 114: {fileID: 11483280}
   m_Layer: 0
   m_Name: Jump
   m_TagString: UserObject
@@ -161,7 +162,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497428}
-  - 114: {fileID: 11466314}
   - 50: {fileID: 5043524}
   m_Layer: 0
   m_Name: Jump
@@ -297,7 +297,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.08, y: 3.37, z: 0}
+  m_LocalPosition: {x: 4.2429557, y: -1.5781411, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 489246}
@@ -330,7 +330,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -1.5}
   serializedVersion: 2
@@ -344,7 +344,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -0.14}
   serializedVersion: 2
@@ -358,7 +358,7 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
@@ -618,19 +618,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11466314
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 146492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c576d3ba8dd459469f51b48488dc624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  userObject: {fileID: 108022}
-  statCanvas: {fileID: 22367262}
 --- !u!114 &11480216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,6 +645,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf14cc7726608e547a42646056a6e24b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11483280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c576d3ba8dd459469f51b48488dc624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userObject: {fileID: 146492}
+  statCanvas: {fileID: 22367262}
 --- !u!114 &11491370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -887,7 +887,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2.3}
+  m_AnchoredPosition: {x: 0, y: -1.82}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22427470

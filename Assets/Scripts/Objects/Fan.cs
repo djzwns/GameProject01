@@ -15,6 +15,12 @@ public class Fan : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        // 줄기가 따로 움직이지 않게.
+        //GameObject.Find("wind_").transform.position = transform.position + (new Vector3(-0.14f, -0.97f, 0f));
+        transform.GetComponentInParent<Rigidbody2D>().transform.FindChild("wind_").transform.position = 
+            transform.position + (new Vector3(-0.14f, -0.97f, 0f));
+
+
         // 내려둔 상태라면
         if (gameObject.GetComponentInParent<ObjectController>().IsDrop())
         {

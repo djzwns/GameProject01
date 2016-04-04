@@ -225,6 +225,7 @@ GameObject:
   - 212: {fileID: 21267670}
   - 114: {fileID: 11424270}
   - 61: {fileID: 6125620}
+  - 114: {fileID: 11411062}
   m_Layer: 0
   m_Name: Pulley
   m_TagString: UserObject
@@ -319,7 +320,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447694}
-  - 114: {fileID: 11469192}
   m_Layer: 0
   m_Name: Pulley
   m_TagString: UserObject
@@ -766,6 +766,19 @@ EdgeCollider2D:
   - {x: 0.5153527, y: 0.07832413}
   - {x: 0.515398, y: 0.32030338}
   - {x: 0.65164566, y: 0.32030335}
+--- !u!114 &11411062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c576d3ba8dd459469f51b48488dc624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userObject: {fileID: 167026}
+  statCanvas: {fileID: 22395334}
 --- !u!114 &11424270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1013,19 +1026,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11469192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c576d3ba8dd459469f51b48488dc624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  userObject: {fileID: 150348}
-  statCanvas: {fileID: 22395334}
 --- !u!114 &11469760
 MonoBehaviour:
   m_ObjectHideFlags: 1

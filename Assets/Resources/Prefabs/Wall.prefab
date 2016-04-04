@@ -109,7 +109,8 @@ GameObject:
   - 4: {fileID: 459066}
   - 212: {fileID: 21226686}
   - 61: {fileID: 6129032}
-  - 50: {fileID: 5096276}
+  - 114: {fileID: 11497846}
+  - 50: {fileID: 5086558}
   m_Layer: 0
   m_Name: Wall
   m_TagString: UserObject
@@ -125,7 +126,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410812}
-  - 114: {fileID: 11490488}
   m_Layer: 0
   m_Name: Wall
   m_TagString: UserObject
@@ -156,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.75, y: 3.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 459066}
@@ -170,12 +170,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00000023842, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.43913615, y: 0.43913615, z: 0.43913615}
   m_Children: []
   m_Father: {fileID: 410812}
   m_RootOrder: 0
---- !u!50 &5096276
+--- !u!50 &5086558
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
@@ -201,7 +201,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -372,18 +372,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11490488
+--- !u!114 &11497846
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179690}
+  m_GameObject: {fileID: 174678}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c576d3ba8dd459469f51b48488dc624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userObject: {fileID: 174678}
+  userObject: {fileID: 179690}
   statCanvas: {fileID: 22396490}
 --- !u!212 &21226686
 SpriteRenderer:

@@ -6,6 +6,7 @@ public class ObjectController : MonoBehaviour {
     bool isDrop;                // 내려놨는지 아닌지 상태를 나타냄.
     bool clickedObject;         // 눌려있는지 아닌지, 게이지 바를 띄워준다.
     bool dropPossible;          // 내려두려는 위치에 내려둘수있는지 체크
+    GameObject clickedObj;      // 눌린 오브젝트 확인용
 
     // GetComponents 사용시 0은 회전, 1은 파워 조절 -----------------------------
     // ex) GetComponentsInChildren<Slider>()[POWER].value 
@@ -21,7 +22,6 @@ public class ObjectController : MonoBehaviour {
 
     void Awake()
     {
-        //rotationCanvas = gameObject.GetComponentInChildren<Canvas>();
         dropPossible = true;
         clickedObject = false;
         statCanvas.enabled = false;
@@ -33,17 +33,20 @@ public class ObjectController : MonoBehaviour {
         if (!isDrop && gameObject.tag == "UserObject") { MoveObject(); }
         if (clickedObject) { RotationObject(); }
 
-        if (Input.GetMouseButtonUp(0) && (gameObject.name.Contains(GetClickedObject().name)))
-        {
-            if (!clickedObject)
-                ObjectClickOn();
-            else
-                ObjectClickOff();
-        }
 
-        if (Input.GetMouseButtonUp(0) && !(gameObject.name.Contains(GetClickedObject().name)))
+        // 눌렸을 때 설정바 온오프
+        if (Input.GetMouseButtonUp(0))
         {
-            ObjectClickOff();
+            clickedObj = GetClickedObject();
+            Debug.Log(clickedObj);
+            if (clickedObj.tag == "UserObject" && gameObject.name == clickedObj.name)
+            {
+                ObjectClick();
+            }
+            else
+            {
+                ObjectClickOff();
+            }
         }
     }
 
@@ -69,8 +72,9 @@ public class ObjectController : MonoBehaviour {
     void MoveObject()
     {
         // 내려 두기 전까지 계속 마우스 따라 이동
-        gameObject.transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(10.0f);
-        if (Input.GetMouseButton(0) && dropPossible)
+        transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(10.0f);
+        statCanvas.transform.position = transform.position;
+        if (Input.GetMouseButtonDown(0) && dropPossible)
         {
             isDrop = true;
         }
@@ -81,7 +85,7 @@ public class ObjectController : MonoBehaviour {
     {
         float sliderVal = (statCanvas.GetComponentsInChildren<Slider>()[ROTATION].value - value);
         // 슬라이더 값만큼 z축을 회전시킴 최대 90도
-        userObject.transform.rotation = Quaternion.AngleAxis (sliderVal * 180f, new Vector3( 0, 0, 1f));
+        transform.rotation = Quaternion.AngleAxis (sliderVal * 180f, new Vector3( 0, 0, 1f));
     }
 
     // 파워 값을 반환해준다. 범위 ( -0.5 ~ 0.5 )
@@ -91,17 +95,11 @@ public class ObjectController : MonoBehaviour {
     }
 
     // 오브젝트 클릭 on/ off 관련 --------------------------------------------
-    void ObjectClickOn()
+    void ObjectClick()
     {
-        clickedObject = true;
-        statCanvas.enabled = true;
+        clickedObject = !clickedObject;
+        statCanvas.enabled = !statCanvas.enabled;
     }
-
-    //void ObjectClick(GameObject obj)
-    //{
-    //    clickedObject = !clickedObject;
-    //    obj.GetComponentInChildren<Canvas>().enabled = !(obj.GetComponent<Canvas>().enabled);
-    //}
 
     void ObjectClickOff()
     {

@@ -24,14 +24,14 @@ public class ObjectUIManager : MonoBehaviour {
 
     void Update()
     {
-        // 마우스가 눌렸다가 때질 때 실행. 괄호의 0은 왼쪽 클릭을 의미
+        // 마우스가 눌렸다 떨어졌을 때 실행. 괄호의 0은 왼쪽 클릭을 의미
         if (Input.GetMouseButtonUp(0))
         {
             // 마우스 위치의 오브젝트를 받아옴
             clickedObj = GetClickedObject();
 
-            // 박스 누르면 팝업 시킴.
-            if (clickedObj.Equals(objBox))
+            // 박스 누르면 창 띄우거나 접어줌. 오브젝트 클릭시에도 마찬가지
+            if (clickedObj.Equals(objBox) || clickedObj.tag == "Preview")
             {
                 SwitchPop();
             }
@@ -40,12 +40,14 @@ public class ObjectUIManager : MonoBehaviour {
             if (clickedObj.name == "play" && ballCount == 0)
             {
                 GamePlay();
+                CloseBox();
             }
 
             // 리셋 버튼
             else if (clickedObj.name == "reset")
             {
                 GameReset();
+                CloseBox();
             }
         }
 
@@ -102,6 +104,11 @@ public class ObjectUIManager : MonoBehaviour {
         }
         cantClick.SetActive(false);
         GetComponent<ObjectManager>().DestroyAllObject();
+    }
+
+    void CloseBox()
+    {
+        isPop = false;
     }
 
     public void SwitchPop()

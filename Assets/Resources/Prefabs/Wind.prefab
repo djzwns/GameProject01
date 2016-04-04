@@ -28,6 +28,8 @@ GameObject:
   - 212: {fileID: 21288840}
   - 61: {fileID: 6141924}
   - 114: {fileID: 11451638}
+  - 114: {fileID: 11456872}
+  - 61: {fileID: 6165580}
   m_Layer: 0
   m_Name: Wind
   m_TagString: UserObject
@@ -76,6 +78,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 460246}
   - 212: {fileID: 21288266}
+  - 61: {fileID: 6198350}
   m_Layer: 0
   m_Name: wind_
   m_TagString: UserObject
@@ -270,9 +273,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451800}
-  - 61: {fileID: 6192466}
-  - 50: {fileID: 5043446}
-  - 114: {fileID: 11485528}
+  - 50: {fileID: 5003654}
   m_Layer: 0
   m_Name: Wind
   m_TagString: UserObject
@@ -312,7 +313,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.3782964, y: -3.8678026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 426918}
@@ -332,7 +333,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 451800}
   m_RootOrder: 1
---- !u!50 &5043446
+--- !u!50 &5003654
 Rigidbody2D:
   serializedVersion: 2
   m_ObjectHideFlags: 1
@@ -363,20 +364,34 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 2}
   serializedVersion: 2
   m_Size: {x: 1.65, y: 3}
---- !u!61 &6192466
+--- !u!61 &6165580
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194686}
+  m_GameObject: {fileID: 121886}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.45}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2, y: 2.8}
+  m_Size: {x: 1.65, y: 1.47}
+--- !u!61 &6198350
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127908}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.39, y: 1.87}
 --- !u!114 &11411990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -554,8 +569,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664118d37e5678c4b9affa6f5a33145a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fanPower: 10
+  power: 10
   windPoint: {fileID: 175738}
+--- !u!114 &11456872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c576d3ba8dd459469f51b48488dc624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userObject: {fileID: 194686}
+  statCanvas: {fileID: 22314908}
 --- !u!114 &11463410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -610,19 +638,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11485528
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 194686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c576d3ba8dd459469f51b48488dc624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  userObject: {fileID: 121886}
-  statCanvas: {fileID: 22314908}
 --- !u!114 &11485746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1037,7 +1052,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2}
+  m_AnchoredPosition: {x: 0, y: -1.63}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22496928

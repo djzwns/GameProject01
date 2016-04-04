@@ -5,10 +5,6 @@ using System.Collections.Generic;
 public class ObjectManager : MonoBehaviour {
     private GameObject clickObj;
 
-    // 메인 카메라를 받아옴
-    //private Camera mainCam = null;
-    
-
     // Start 함수 앞에서 호출됨.
     void Awake()
     {
@@ -17,7 +13,7 @@ public class ObjectManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             clickObj = GetClickedObject();
 
@@ -25,9 +21,6 @@ public class ObjectManager : MonoBehaviour {
             {
                 // 오브젝트의 클론을 생성
                 CreateObject().GetComponent<ObjectController>().HoldObject();
-
-                // 오브젝트를 뽑았다면 UI를 제자리로 돌려둔다.
-                GetComponent<ObjectUIManager>().SwitchPop();
             }
         }
     }
@@ -44,9 +37,9 @@ public class ObjectManager : MonoBehaviour {
         // 리소스 폴더에서 프리팹을 불러온다.
         GameObject obj = Instantiate(Resources.Load("Prefabs/" + clickObj.name) as GameObject);
 
-        obj.GetComponent<ObjectController>().enabled = true;
+        //obj.GetComponent<ObjectController>().enabled = true;
         // 트리거를 바꿔준다.
-        obj.GetComponentInChildren<Collider2D>().isTrigger = false;
+        //obj.GetComponentInChildren<Collider2D>().isTrigger = false;
 
         return obj;
     }
