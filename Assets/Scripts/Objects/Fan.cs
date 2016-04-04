@@ -4,7 +4,8 @@ using System.Collections;
 public class Fan : MonoBehaviour {
     Vector2 direction;  // 날려보낼 방향을 정함
 
-    public float fanPower = 10f;
+    float fanPower = 1f;
+    public float power = 10f;
     public GameObject windPoint;
 
     void Awake ()
@@ -31,7 +32,7 @@ public class Fan : MonoBehaviour {
     {
         if (obj.tag == "Ball")
         {
-            fanPower = (gameObject.GetComponentInParent<ObjectController>().GetPowerObject() + 0.5f) * 10f;
+            fanPower = (gameObject.GetComponentInParent<ObjectController>().GetPowerObject() + 0.5f) * power;
             obj.GetComponent<Rigidbody2D>().AddForce( direction * fanPower, ForceMode2D.Force);
         }
     }
