@@ -26,10 +26,7 @@ public class Pulley : MonoBehaviour {
         //if (gameObject.GetComponentInParent<ObjectController>().IsDrop() && speed != 0)
         //{
         //}
-        if (gameObject.tag != "Preview")
-        {
             RotPulley();
-        }
     }
 
     // 물레방아? 도르래? 아무튼 회전시킨다.
