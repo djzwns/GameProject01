@@ -27,9 +27,9 @@ public class Jump : MonoBehaviour
     {
         if (obj.gameObject.tag == "Ball")
         {
-            power = (gameObject.GetComponentInParent<ObjectController>().GetPowerObject() + 0.5f) * 10f;
+            power = (gameObject.GetComponentInParent<ObjectController>().GetPowerObject()) * 10f;
             //gameObject.GetComponent<EdgeCollider2D>().sharedMaterial.bounciness = power;
-            Debug.Log(power);
+            //Debug.Log(power);
             obj.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * power, ForceMode2D.Impulse);
         }
     }

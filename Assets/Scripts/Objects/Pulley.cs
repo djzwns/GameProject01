@@ -21,7 +21,7 @@ public class Pulley : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        speed = gameObject.GetComponentInParent<ObjectController>().GetPowerObject() * power;
+        speed = (gameObject.GetComponentInParent<ObjectController>().GetPowerObject()-0.5f) * power;
         // 계속 돌아가게 만듬
         //if (gameObject.GetComponentInParent<ObjectController>().IsDrop() && speed != 0)
         //{

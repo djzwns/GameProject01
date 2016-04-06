@@ -15,10 +15,9 @@ public class ObjectController : MonoBehaviour {
     const int POWER = 1;
     // --------------------------------------------------------------------------
     
-
-    float value = 0.5f;         // 슬라이더의 값이 0~1인데 이것을 -0.5~0.5 사이에서 쓰기위해 뺴주는 값
-    public GameObject userObject;
-    public Canvas statCanvas;   // 회전, 파워 관리하는 캔버스
+        
+    public GameObject userObject;   // 유저오브젝트 회전 등을 관리하기 위한 변수
+    public Canvas statCanvas;       // 회전, 파워 관리하는 캔버스
 
     void Awake()
     {
@@ -31,7 +30,7 @@ public class ObjectController : MonoBehaviour {
     void Update()
     {
         if (!isDrop && gameObject.tag == "UserObject") { MoveObject(); }
-        if (clickedObject) { RotationObject(); }
+        if (clickedObject && gameObject.tag == "UserObject") { RotationObject(); }
 
 
         // 눌렸을 때 설정바 온오프
@@ -83,15 +82,16 @@ public class ObjectController : MonoBehaviour {
     // 오브젝트 회전
     void RotationObject()
     {
-        float sliderVal = (statCanvas.GetComponentsInChildren<Slider>()[ROTATION].value - value);
+        // value 에 0.5를 뺀 이유는 value 값을 -0.5~0.5로 쓰기 위해서임
+        float sliderVal = (statCanvas.GetComponentsInChildren<Slider>()[ROTATION].value - 0.5f);
         // 슬라이더 값만큼 z축을 회전시킴 최대 90도
         transform.rotation = Quaternion.AngleAxis (sliderVal * 180f, new Vector3( 0, 0, 1f));
     }
 
-    // 파워 값을 반환해준다. 범위 ( -0.5 ~ 0.5 )
+    // 파워 값을 반환해준다.
     public float GetPowerObject() 
     {
-        return statCanvas.GetComponentsInChildren<Slider>()[POWER].value - value;
+        return statCanvas.GetComponentsInChildren<Slider>()[POWER].value;
     }
 
     // 오브젝트 클릭 on/ off 관련 --------------------------------------------
@@ -122,5 +122,9 @@ public class ObjectController : MonoBehaviour {
     public bool IsDrop()
     {
         return isDrop;
+    }
+    public bool IsClicked()
+    {
+        return clickedObject;
     }
 }
