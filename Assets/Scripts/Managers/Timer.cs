@@ -22,11 +22,10 @@ public class Timer : MonoBehaviour {
     float currentTime;           // 현재 시간
     int timeCycle;               // 시간 초과된 횟수
     
-	void  Awake()
+    // Start함수, 모든 Awake함수의 호출 뒤에 실행 되는 함수로 호출 순서에 주의 해야함..
+    // 왜 쓰는지도 모르고 Awake만 쓰다가 이 일을 계기로 어마어마한 발견을 했다.
+	void  Start()
     {
-        openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
-        openTimer.size = 1 - (openTime / closeTime);  // 시간 비율로 사이즈 잡아줌.
-
         Init();
     }
 	
@@ -40,7 +39,7 @@ public class Timer : MonoBehaviour {
         }
         else
         {
-            Init();
+            InitTime();
         }
 	}
 
@@ -81,7 +80,7 @@ public class Timer : MonoBehaviour {
     }
 
     // 완전 초기화 시킴
-    void Init()
+    void InitTime()
     {
         currentTime = 0;
         currentTimeText.text = "현재 시간 : 0";
@@ -91,5 +90,20 @@ public class Timer : MonoBehaviour {
         timeCycleText.text = "초과된 횟수 : 0";
 
         endPoint.SetActive(true);
+    }
+
+    public void Init()
+    {
+        // endPoint 를 받아와 열리는 시간과 닫히는 시간에 대한 정보를 받아온다 -----
+        endPoint = GameObject.Find("EndPoint");
+        openTime = endPoint.GetComponent<EndPointTime>().GetOpenTime();
+        closeTime = endPoint.GetComponent<EndPointTime>().GetCloseTime();
+        // -------------------------------------------------------------------------
+
+        // 기본 적인 스테이지 정보로 개방 시간을 출력해줌.
+        openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
+        openTimer.size = 1 - (openTime / closeTime);  // 시간 비율로 사이즈 잡아줌.
+
+        InitTime();
     }
 }
