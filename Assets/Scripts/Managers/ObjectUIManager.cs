@@ -2,12 +2,10 @@
 using System.Collections;
 
 public class ObjectUIManager : MonoBehaviour {
-    public GameObject pfBall;
     public GameObject objBox;
     public GameObject cantClick;
+    public GameObject pfBall;
 
-    GameObject ball;
-    int ballCount = 0;
 
     public float speed = 100f;
 
@@ -15,6 +13,7 @@ public class ObjectUIManager : MonoBehaviour {
     private bool isPop = false;
     // 마우스에 눌린 오브젝트
     private GameObject clickedObj;
+    private GameObject ball;
 
 
     void Awake()
@@ -36,17 +35,24 @@ public class ObjectUIManager : MonoBehaviour {
                 SwitchPop();
             }
 
-            // 게임 시작버튼 공이 0개일 때만 실행 됨.
-            if (clickedObj.name == "play" && ballCount == 0)
+            // 게임 시작버튼.
+            if (clickedObj.name == "play")
             {
-                GamePlay();
+                // 공이 없으면 새로 만들어줌
+                if( ball == null )
+                    ball = Instantiate(pfBall);
+                ball.GetComponent<BallController>().GamePlay();
+                cantClick.SetActive(true);
                 CloseBox();
             }
 
             // 리셋 버튼
             else if (clickedObj.name == "reset")
             {
-                GameReset();
+                if( ball != null )
+                    ball.GetComponent<BallController>().GameReset();
+                GetComponent<ObjectManager>().DestroyAllObject();
+                cantClick.SetActive(false);
                 CloseBox();
             }
         }
@@ -81,29 +87,6 @@ public class ObjectUIManager : MonoBehaviour {
                 objBox.transform.position += new Vector3(Time.deltaTime * speed, 0f, 0f);
         }
         // ---------------------------------------------------------------------------------
-    }
-
-    // 시작
-    private void GamePlay()
-    {
-        ball = Instantiate(pfBall);
-        ++ballCount;
-
-        cantClick.SetActive(true);
-    }
-
-    // 리셋
-    private void GameReset()
-    {
-        // 공이 1개 일때 파괴 후 카운트 감소
-        if (ballCount == 1)
-        {
-            ball.GetComponent<BallController>().Reset();
-            Destroy(ball);
-            --ballCount;
-        }
-        cantClick.SetActive(false);
-        GetComponent<ObjectManager>().DestroyAllObject();
     }
 
     void CloseBox()
