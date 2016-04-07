@@ -4,6 +4,7 @@ using System.Collections;
 public class Jump : MonoBehaviour
 {
     float power = 1f;
+    public float _power = 10f;
 
     void Awake()
     {
@@ -25,9 +26,10 @@ public class Jump : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D obj)
     {
+        if (gameObject.tag == "UserOpject") power = (gameObject.GetComponentInParent<ObjectController>().GetPowerObject()) * 10f;
+        else power = _power;
         if (obj.gameObject.tag == "Ball")
         {
-            power = (gameObject.GetComponentInParent<ObjectController>().GetPowerObject()) * 10f;
             //gameObject.GetComponent<EdgeCollider2D>().sharedMaterial.bounciness = power;
             //Debug.Log(power);
             obj.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * power, ForceMode2D.Impulse);

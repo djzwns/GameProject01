@@ -27,8 +27,6 @@ public class Fan : MonoBehaviour {
             gameObject.GetComponentInParent<BoxCollider2D>().isTrigger = true;
             // 잠궈뒀던 포지션 개방!
             gameObject.GetComponentInParent<Rigidbody2D>().constraints = ~RigidbodyConstraints2D.FreezePositionY;
-
-            direction = windPoint.transform.position - transform.position;    // 바람의 방향을 저장해둠.
         }
     }
 
@@ -36,9 +34,13 @@ public class Fan : MonoBehaviour {
     // Enter가 아닌 Stay를 쓴 이유는 바람의 영향속에 있으면 계속 호출 되도록 하기 위해 사용
     void OnTriggerStay2D(Collider2D obj)
     {
-        if (obj.tag == "Ball")
+        Debug.Log(gameObject.tag);
+        if (gameObject.tag == "UserObject") fanPower = gameObject.GetComponentInParent<ObjectController>().GetPowerObject() * power;
+        else fanPower = power;
+
+        direction = windPoint.transform.position - transform.position;    // 바람의 방향을 저장해둠.
+        if (obj.gameObject.tag == "Ball")
         {
-            fanPower = gameObject.GetComponentInParent<ObjectController>().GetPowerObject() * power;
             obj.GetComponent<Rigidbody2D>().AddForce( direction * fanPower, ForceMode2D.Force);
         }
     }
