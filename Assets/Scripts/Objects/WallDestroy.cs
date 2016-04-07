@@ -4,12 +4,21 @@ using System.Collections;
 public class WallDestroy : MonoBehaviour {
 
     public float destroyTime = 0.2f;
+    //public float respawnTime = 3f;
+    float timer = 0f;
+    
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionStay2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Ball")
         {
-            Destroy(gameObject, destroyTime);
+            timer += Time.deltaTime;
+            if (timer > destroyTime) 
+            {
+                gameObject.SetActive(false);
+                timer = 0f;
+            }
+            //Destroy(gameObject, destroyTime);
         }
     }
 }
