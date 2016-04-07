@@ -102,7 +102,7 @@ public class Timer : MonoBehaviour {
 
         // 기본 적인 스테이지 정보로 개방 시간을 출력해줌.
         openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
-        openTimer.size = 1 - (openTime / closeTime);  // 시간 비율로 사이즈 잡아줌.
+        openTimer.value = openTime / closeTime;  // 시간 비율로 사이즈 잡아줌.
 
         InitTime();
     }
