@@ -6,25 +6,26 @@ public class StageManager : MonoBehaviour
     public Timer timer;
     public ObjectManager objManager;
     GameObject stage;   // 스테이지 생성 시 여기에 저장됨.
-    int stageCount;
+    public int stageCount;
 
     // Use this for initialization
     void Awake ()
     {
-        stageCount = 1;
+        // stageCount = 2;
         stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
-        //objManager = GameObject.Find("GameManager").GetComponent<ObjectManager>();
     }
 
+    // 스테이지 제거
     public void StageClear()
     {
-        ++stageCount;
         Destroy(stage);
-        objManager.DestroyAllObject();
+        //objManager.DestroyAllObject();
     }
 
+    // 다음 스테이지를 생성한다.
     public void NextStage()
     {
+        ++stageCount;
         stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
         Debug.Log(stage.name);
 
@@ -38,5 +39,10 @@ public class StageManager : MonoBehaviour
 
         // 스테이지 새로 생기면 타이머 초기화
         timer.Init();
+
+
+        //objManager = GetComponent<ObjectManager>();
+        //objManager.DestroyAllObject();
+        GetComponent<ObjectUIManager>().Reset();
     }
 }

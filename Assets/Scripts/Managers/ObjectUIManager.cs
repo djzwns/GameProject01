@@ -11,6 +11,8 @@ public class ObjectUIManager : MonoBehaviour {
 
     // object UI의 상태
     private bool isPop = false;
+    private bool isReset = false;
+
     // 마우스에 눌린 오브젝트
     private GameObject clickedObj;
     private GameObject ball;
@@ -49,12 +51,18 @@ public class ObjectUIManager : MonoBehaviour {
             // 리셋 버튼
             else if (clickedObj.name == "reset")
             {
-                if( ball != null )
-                    ball.GetComponent<BallController>().GameReset();
-                GetComponent<ObjectManager>().DestroyAllObject();
-                cantClick.SetActive(false);
-                CloseBox();
+                isReset = true;
             }
+        }
+        if (isReset)
+        {
+            if (ball != null)
+                ball.GetComponent<BallController>().GameReset();
+            GetComponent<ObjectManager>().DestroyAllObject();
+            cantClick.SetActive(false);
+            CloseBox();
+
+            isReset = false;
         }
 
         // 오브젝트 창
@@ -107,5 +115,11 @@ public class ObjectUIManager : MonoBehaviour {
         //    if (objBox.transform.position.x <= -18.8)
         //        objBox.transform.position += new Vector3(-18.8f * Time.deltaTime, 0f, -0.9f);
         //}
+    }
+
+    // 클릭 가능하게 바꿔줌
+    public void Reset()
+    {
+        isReset = true;
     }
 }

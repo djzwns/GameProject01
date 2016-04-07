@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;  // SceneManager 사용
 public class BallController : MonoBehaviour {
     GameObject startPoint;          // 공의 시작 위치를 잡아줌
     StageManager stageManager;
+
+    //public GameObject light;
     
     int ballCount = 0;
-
-    public GameObject pfBall;
 
     void Awake () {
         stageManager = GameObject.Find("GameManager").GetComponent<StageManager>();
         Init();
+    }
+
+    void Update()
+    {
+        //light.transform.position = transform.position;
     }
 
     void OnTriggerEnter2D(Collider2D end)
