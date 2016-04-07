@@ -38,21 +38,21 @@ public class ObjectUIManager : MonoBehaviour {
             }
 
             // 게임 시작버튼.
-            if (clickedObj.name == "play")
-            {
-                // 공이 없으면 새로 만들어줌
-                if( ball == null )
-                    ball = Instantiate(pfBall);
-                ball.GetComponent<BallController>().GamePlay();
-                cantClick.SetActive(true);
-                CloseBox();
-            }
+            //if (clickedObj.name == "play")
+            //{
+            //    // 공이 없으면 새로 만들어줌
+            //    if (ball == null)
+            //        ball = Instantiate(pfBall);
+            //    ball.GetComponent<BallController>().GamePlay();
+            //    cantClick.SetActive(true);
+            //    CloseBox();
+            //}
 
-            // 리셋 버튼
-            else if (clickedObj.name == "reset")
-            {
-                isReset = true;
-            }
+            //// 리셋 버튼
+            //else if (clickedObj.name == "reset")
+            //{
+            //    isReset = true;
+            //}
         }
         if (isReset)
         {
@@ -115,6 +115,15 @@ public class ObjectUIManager : MonoBehaviour {
         //    if (objBox.transform.position.x <= -18.8)
         //        objBox.transform.position += new Vector3(-18.8f * Time.deltaTime, 0f, -0.9f);
         //}
+    }
+    public void Play()
+    {
+        // 공이 없으면 새로 만들어줌
+        if (ball == null)
+            ball = Instantiate(pfBall);
+        ball.GetComponent<BallController>().GamePlay();
+        cantClick.SetActive(true);
+        CloseBox();
     }
 
     // 클릭 가능하게 바꿔줌
