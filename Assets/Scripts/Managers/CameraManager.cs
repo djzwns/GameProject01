@@ -2,21 +2,6 @@
 using System.Collections;
 
 public class CameraManager : MonoBehaviour {
-    GameObject ball = null;
-    public float camPositionZ = -8f;
-    Vector3 zPosition;
-    
-
-	// Use this for initialization
-	void Awake () {
-        ball = GameObject.Find("Ball");
-        zPosition = new Vector3(0, 0, camPositionZ);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        //Camera.main.transform.position = ball.transform.position + zPosition;
-    }
 
     // 클릭된 위치에 있는 오브젝트를 반환해준다.
     public GameObject GetClickedObject()
