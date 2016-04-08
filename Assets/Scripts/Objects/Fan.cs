@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Fan : MonoBehaviour {
     Vector2 direction;  // 날려보낼 방향을 정함
+    Vector3 stemPos;
 
     float fanPower = 1f;
     public float power = 10f;
@@ -10,6 +11,9 @@ public class Fan : MonoBehaviour {
 
     void Awake ()
     {
+        stemPos.x = 0f;
+        stemPos.y = -0.47f;
+        stemPos.z = 0.1f;
     }
 	
 	// Update is called once per frame
@@ -17,8 +21,8 @@ public class Fan : MonoBehaviour {
     {
         // 줄기가 따로 움직이지 않게.
         //GameObject.Find("wind_").transform.position = transform.position + (new Vector3(-0.14f, -0.97f, 0f));
-        transform.GetComponentInParent<Rigidbody2D>().transform.FindChild("wind_").transform.position = 
-            transform.position + (new Vector3(-0.14f, -0.97f, 0f));
+        transform.GetComponentInParent<Rigidbody2D>().transform.FindChild("wind_").transform.position =
+            transform.position + stemPos;
 
 
         // 내려둔 상태라면
@@ -34,7 +38,6 @@ public class Fan : MonoBehaviour {
     // Enter가 아닌 Stay를 쓴 이유는 바람의 영향속에 있으면 계속 호출 되도록 하기 위해 사용
     void OnTriggerStay2D(Collider2D obj)
     {
-        Debug.Log(gameObject.tag);
         if (gameObject.tag == "UserObject") fanPower = gameObject.GetComponentInParent<ObjectController>().GetPowerObject() * power;
         else fanPower = power;
 
