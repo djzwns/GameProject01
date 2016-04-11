@@ -44,5 +44,6 @@ public class StageManager : MonoBehaviour
         //objManager = GetComponent<ObjectManager>();
         //objManager.DestroyAllObject();
         GetComponent<ObjectUIManager>().Reset();
+        GetComponent<ObjectUIManager>().Reset();
     }
 }
