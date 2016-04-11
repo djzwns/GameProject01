@@ -929,7 +929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 60434500}
   objManager: {fileID: 0}
-  stageCount: 2
+  stageCount: 4
 --- !u!1 &525445921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,7 +1974,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -3.2}
   serializedVersion: 2
