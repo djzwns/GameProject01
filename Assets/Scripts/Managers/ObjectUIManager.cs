@@ -75,7 +75,7 @@ public class ObjectUIManager : MonoBehaviour {
         {
             // 범위 초과시 포지션 고정
             if(objBox.transform.position.x <= -18.8f)
-                objBox.transform.position = new Vector3(-18.8f, 0f, -0.9f);
+                objBox.transform.position = new Vector3(-18.8f, 0f, -2.0f);
             else
                 objBox.transform.position += new Vector3(Time.deltaTime * (-speed), 0f, 0f);
         }
@@ -83,7 +83,7 @@ public class ObjectUIManager : MonoBehaviour {
         {
             // 범위 초과시 포지션 고정
             if(objBox.transform.position.x >= -5.8f)
-                objBox.transform.position = new Vector3(-5.8f, 0f, -0.9f);
+                objBox.transform.position = new Vector3(-5.8f, 0f, -2.0f);
             else
                 objBox.transform.position += new Vector3(Time.deltaTime * speed, 0f, 0f);
         }
@@ -98,16 +98,6 @@ public class ObjectUIManager : MonoBehaviour {
     public void SwitchPop()
     {
         isPop = !isPop;
-        //if (!isPop)
-        //{
-        //    if (objBox.transform.position.x >= -5.8)
-        //        objBox.transform.position += new Vector3(-5.8f * Time.deltaTime, 0f, -0.9f);
-        //}
-        //else
-        //{
-        //    if (objBox.transform.position.x <= -18.8)
-        //        objBox.transform.position += new Vector3(-18.8f * Time.deltaTime, 0f, -0.9f);
-        //}
     }
     public void Play()
     {
