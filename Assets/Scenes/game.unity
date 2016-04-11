@@ -929,7 +929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 60434500}
   objManager: {fileID: 0}
-  stageCount: 1
+  stageCount: 2
 --- !u!1 &525445921
 GameObject:
   m_ObjectHideFlags: 0
