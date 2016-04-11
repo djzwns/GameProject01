@@ -12,6 +12,8 @@ public class ObjectUIManager : MonoBehaviour {
     // object UI의 상태
     private bool isPop = false;
     private bool isReset = false;
+    private int buttonClickCount = 0;
+    private float clickTime;
 
     // 마우스에 눌린 오브젝트
     private GameObject clickedObj;
@@ -21,6 +23,7 @@ public class ObjectUIManager : MonoBehaviour {
     void Awake()
     {
         cantClick.SetActive(false);
+        clickTime = 0;
     }
 
     void Update()
@@ -36,37 +39,27 @@ public class ObjectUIManager : MonoBehaviour {
             {
                 SwitchPop();
             }
-
-            // 게임 시작버튼.
-            //if (clickedObj.name == "play")
-            //{
-            //    // 공이 없으면 새로 만들어줌
-            //    if (ball == null)
-            //        ball = Instantiate(pfBall);
-            //    ball.GetComponent<BallController>().GamePlay();
-            //    cantClick.SetActive(true);
-            //    CloseBox();
-            //}
-
-            //// 리셋 버튼
-            //else if (clickedObj.name == "reset")
-            //{
-            //    isReset = true;
-            //}
         }
         if (isReset)
         {
             if (ball != null)
                 ball.GetComponent<BallController>().GameReset();
-            GetComponent<ObjectManager>().DestroyAllObject();
             cantClick.SetActive(false);
             CloseBox();
 
+            if (buttonClickCount == 2)
+            {
+                PerfectReset();
+            }
             isReset = false;
         }
 
         // 오브젝트 창
         PopUp();
+
+        // 버튼이 눌렸을 때 시간 카운트
+        if( buttonClickCount != 0 )
+            clickTime += Time.deltaTime;
     }
 
     // 클릭된 위치에 있는 오브젝트를 반환해준다.
@@ -123,12 +116,32 @@ public class ObjectUIManager : MonoBehaviour {
             ball = Instantiate(pfBall);
         ball.GetComponent<BallController>().GamePlay();
         cantClick.SetActive(true);
+        buttonClickCount = 0;
         CloseBox();
     }
 
-    // 클릭 가능하게 바꿔줌
+    // 리셋 버튼 클릭 시 공 초기화 + 더블클릭 카운트
     public void Reset()
     {
         isReset = true;
+
+        if (clickTime < 1.5f)
+        {
+            ++buttonClickCount;
+        }        
+        else
+        {   // 버튼 누르고 1.5초가 지나면 카운트 및 시간 초기화
+            clickTime = 0;
+            buttonClickCount = 0;
+        }
+        CloseBox();
+    }
+
+    // 더블 클릭 시 실행되며 유저가 만들어둔 오브젝트를 초기화 시킨다.
+    public void PerfectReset()
+    {
+        isReset = true;
+        buttonClickCount = 0;
+        GetComponent<ObjectManager>().DestroyAllObject();
     }
 }
