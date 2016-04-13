@@ -180,6 +180,7 @@ GameObject:
   - 114: {fileID: 11431496}
   - 61: {fileID: 6148890}
   - 114: {fileID: 11460186}
+  - 95: {fileID: 9527126}
   m_Layer: 0
   m_Name: Jump
   m_TagString: Untagged
@@ -2152,7 +2153,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: -2.97, z: 0}
+  m_LocalPosition: {x: -9, y: -2.97, z: -1}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 412382}
@@ -3444,6 +3445,23 @@ EdgeCollider2D:
   - {x: -1.3636626, y: 1.1173382}
   - {x: 1.370186, y: 1.1183481}
   - {x: 1.4538327, y: 1.0254307}
+--- !u!95 &9527126
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116562}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d1af1401b1a382049a52145f64660321, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11401032
 MonoBehaviour:
   m_ObjectHideFlags: 1
