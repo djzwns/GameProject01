@@ -108,6 +108,7 @@ public class Timer : MonoBehaviour {
     // 스테이지 전환하면서 초기화 시킬 때 사용
     public void Init(GameObject stage)
     {
+        endPoint = GameObject.Find("EndPoint");
         EndPointTime endpoint;
         // endPoint 를 받아와 열리는 시간과 닫히는 시간에 대한 정보를 받아온다 -----
         endpoint = stage.GetComponentInChildren<EndPointTime>();

@@ -17,7 +17,7 @@ public class StageManager : MonoBehaviour
     public int lastStage;      // 마지막 스테이지
 
     // Use this for initialization
-    void Awake ()
+    void Start ()
     {
         // stageCount = 2;
         //stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
@@ -34,6 +34,7 @@ public class StageManager : MonoBehaviour
             StageSelect.enabled = false;        // 선택창 비활성화
             stageCount = int.Parse(stageNumber);
             stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
+            timer.Init(stage);
         }
     }
 
