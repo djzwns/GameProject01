@@ -134,4 +134,10 @@ public class ObjectUIManager : MonoBehaviour {
         buttonClickCount = 0;
         GetComponent<ObjectManager>().DestroyAllObject();
     }
+
+    public void StageClear()
+    {
+        isReset = true;
+        buttonClickCount = 2;
+    }
 }
