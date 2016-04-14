@@ -5,6 +5,12 @@ public class StageManager : MonoBehaviour
 {
     public Timer timer;
     public ObjectManager objManager;
+    public SaveLoad file;
+
+    public Canvas StageSelect;
+    public Canvas UICanvas;
+
+
     GameObject stage;   // 스테이지 생성 시 여기에 저장됨.
     public int stageCount;// 현재 스테이지
     public int reachStage;     // 최대로 올라간 스테이지
@@ -14,14 +20,31 @@ public class StageManager : MonoBehaviour
     void Awake ()
     {
         // stageCount = 2;
-        stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
-        GetComponent<SaveLoad>().LoadStage();
+        //stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
+        UICanvas.enabled = false;
+        file.LoadStage();
     }
 
     // 스테이지 생성 : 스테이지 선택 시 사용
-    public void CreateStage()
+    public void CreateStage(string stageNumber)
     {
-        stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
+        if (int.Parse(stageNumber) <= reachStage)
+        {
+            UICanvas.enabled = true;            // 스테이지 생성시 UI 활성화
+            StageSelect.enabled = false;        // 선택창 비활성화
+            stageCount = int.Parse(stageNumber);
+            stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
+        }
+    }
+
+    // 스테이지 선택화면으로 돌아감.
+    public void ReturnStage(string fileNamePath)
+    {
+        UICanvas.enabled = false;           // 선택화면에서 UI 비활성화
+        StageSelect.enabled = true;
+        file.SaveFile(fileNamePath);
+
+        Destroy(stage);
     }
 
     // 스테이지 제거
