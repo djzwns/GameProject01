@@ -44,6 +44,7 @@ public class StageManager : MonoBehaviour
         UICanvas.enabled = false;           // 선택화면에서 UI 비활성화
         StageSelect.enabled = true;
         file.SaveFile(fileNamePath);
+        GetComponent<StageButtonActive>().ButtonInteractable();
 
         Destroy(stage);
     }
