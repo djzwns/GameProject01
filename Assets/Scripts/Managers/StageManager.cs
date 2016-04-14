@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
     GameObject stage;   // 스테이지 생성 시 여기에 저장됨.
     public int stageCount;// 현재 스테이지
     public int reachStage;     // 최대로 올라간 스테이지
+    public int lastStage;      // 마지막 스테이지
 
     // Use this for initialization
     void Awake ()
@@ -33,7 +34,15 @@ public class StageManager : MonoBehaviour
     // 다음 스테이지를 생성한다.
     public void NextStage()
     {
+        // 마지막 스테이지인지 체크
+        if (stageCount + 1 > lastStage)
+        {
+            stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
+            return;
+        }
+        // 마지막 아니면 다음 스테이지로
         ++stageCount;
+
 
         // 현재 스테이지가 최종 도달한 스테이지보다 커지면 갱신 시킴
         if( stageCount > reachStage )
@@ -42,16 +51,16 @@ public class StageManager : MonoBehaviour
         stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
         Debug.Log(stage.name);
 
-        if (stage == null)
-        {
-            print("스테이지 없음");
-            --stageCount;
-            stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
+        //if (stage == null)
+        //{
+        //    print("스테이지 없음");
+        //    --stageCount;
+        //    stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
 
-        }
+        //}
 
         // 스테이지 새로 생기면 타이머 초기화
-        timer.Init();
+        timer.Init(stage);
 
 
         //objManager = GetComponent<ObjectManager>();

@@ -92,7 +92,7 @@ public class Timer : MonoBehaviour {
         endPoint.SetActive(true);
     }
 
-    public void Init()
+    void Init()
     {
         // endPoint 를 받아와 열리는 시간과 닫히는 시간에 대한 정보를 받아온다 -----
         endPoint = GameObject.Find("EndPoint");
@@ -103,7 +103,21 @@ public class Timer : MonoBehaviour {
         // 기본 적인 스테이지 정보로 개방 시간을 출력해줌.
         openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
         openTimer.value = openTime / closeTime;  // 시간 비율로 사이즈 잡아줌.
-
-        InitTime();
     }
+
+    // 스테이지 전환하면서 초기화 시킬 때 사용
+    public void Init(GameObject stage)
+    {
+        EndPointTime endpoint;
+        // endPoint 를 받아와 열리는 시간과 닫히는 시간에 대한 정보를 받아온다 -----
+        endpoint = stage.GetComponentInChildren<EndPointTime>();
+        openTime = endpoint.GetOpenTime();
+        closeTime = endpoint.GetCloseTime();
+        // -------------------------------------------------------------------------
+
+        // 기본 적인 스테이지 정보로 개방 시간을 출력해줌.
+        openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
+        openTimer.value = openTime / closeTime;  // 시간 비율로 사이즈 잡아줌.
+    }
+
 }
