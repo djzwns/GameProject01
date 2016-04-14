@@ -23,11 +23,7 @@ public class SaveLoad : MonoBehaviour {
     public void LoadFile(string fileNamePath)
     {
         StreamReader read = new StreamReader(fileNamePath);
-
-        if (read == null)
-        {
-            loadStage = "1";
-        }
+        
         if (read.Peek() >= 0)
         {
             loadStage = read.ReadLine();
