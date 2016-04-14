@@ -45,6 +45,8 @@ public class StageManager : MonoBehaviour
         StageSelect.enabled = true;
         file.SaveFile(fileNamePath);
         GetComponent<StageButtonActive>().ButtonInteractable();
+        GetComponent<ObjectUIManager>().StageClear();
+
 
         Destroy(stage);
     }
