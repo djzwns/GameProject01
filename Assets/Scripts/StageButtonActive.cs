@@ -39,7 +39,7 @@ public class StageButtonActive : MonoBehaviour {
                 button[i].GetComponentsInChildren<Image>()[2].sprite = sprite[CLOSE];
         }
         // 스테이지에 들어갈 수는 있지만 아직 클리어 하지 않은 부분은 빈 이미지 사용
-        if( MAXSTAGE > reachStage )
+        if( MAXSTAGE >= reachStage )
             button[reachStage-1].GetComponentsInChildren<Image>()[2].sprite = sprite[NOTHING];
     }
 }

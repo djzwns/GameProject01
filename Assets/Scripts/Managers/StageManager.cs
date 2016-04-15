@@ -68,6 +68,7 @@ public class StageManager : MonoBehaviour
         if (stageCount + 1 > lastStage)
         {
             stage = Instantiate(Resources.Load("Prefabs/Stage/" + "Stage" + stageCount) as GameObject);
+            reachStage = stageCount + 1;
             return;
         }
         // 마지막 아니면 다음 스테이지로
