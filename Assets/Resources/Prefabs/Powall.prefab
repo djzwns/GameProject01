@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11466204}
   - 114: {fileID: 11421710}
   - 50: {fileID: 5085456}
+  - 95: {fileID: 9567546}
   m_Layer: 0
   m_Name: Powall
   m_TagString: UserObject
@@ -360,6 +361,23 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 6.61, y: 1.66}
+--- !u!95 &9567546
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85cd2ee8e85682c48aae55be05782f69, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11410670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -706,7 +724,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 94bd91321644cde46a3254d1dcca2c19, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fffcbec3f33abef489e1d2516470d2a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
