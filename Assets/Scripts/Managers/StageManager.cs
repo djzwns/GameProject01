@@ -3,6 +3,7 @@ using System.Collections;
 
 public class StageManager : MonoBehaviour
 {
+    public AudioSource clearSound;
     public Timer timer;
     public ObjectManager objManager;
     public SaveLoad file;
@@ -54,6 +55,8 @@ public class StageManager : MonoBehaviour
     // 스테이지 제거
     public void StageClear()
     {
+        //AudioSource.PlayClipAtPoint(clearSound, transform.position,10f);
+        clearSound.Play();
         Destroy(stage);
         //objManager.DestroyAllObject();
     }

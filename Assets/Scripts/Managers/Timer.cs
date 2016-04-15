@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour {
     // ------------------------------
 
     public GameObject endPoint;     // 개방 될 문임
+    public AudioSource openSound;   // 문 열릴 때 소리
 
     // 그래픽으로 시간의 흐름을 보여줌 -----------------------------------
     public Scrollbar openTimer;     // 오픈 타이머
@@ -21,12 +22,14 @@ public class Timer : MonoBehaviour {
 
     float currentTime;           // 현재 시간
     int timeCycle;               // 시간 초과된 횟수
+    bool soundPlay;              // 소리 재생되고 있는지.
     
     // Start함수, 모든 Awake함수의 호출 뒤에 실행 되는 함수로 호출 순서에 주의 해야함..
     // 왜 쓰는지도 모르고 Awake만 쓰다가 이 일을 계기로 어마어마한 발견을 했다.
 	void  Start()
     {
         Init();
+        soundPlay = false;
     }
 	
 	// Update is called once per frame
@@ -55,10 +58,16 @@ public class Timer : MonoBehaviour {
         if (openTime <= currentTime && currentTime <= closeTime)
         {
             endPoint.SetActive(true);
+            if (!soundPlay)
+            {
+                openSound.Play();
+                soundPlay = true;
+            }
         }
         else
         {
             endPoint.SetActive(false);
+            soundPlay = false;
 
         }
 

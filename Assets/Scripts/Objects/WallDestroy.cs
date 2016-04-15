@@ -3,6 +3,7 @@ using System.Collections;
 
 public class WallDestroy : MonoBehaviour {
     public float destroyTime = 0.2f;
+    public AudioSource woodSound;
     //public float respawnTime = 3f;
     //float timer = 0f;
     //float respawnTimer = 0f;
@@ -46,6 +47,7 @@ public class WallDestroy : MonoBehaviour {
             //    isActive = false;
             //}
             Destroy(gameObject, destroyTime);
+            woodSound.Play();
         }
     }
 }

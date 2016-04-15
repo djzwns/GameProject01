@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ObjectManager : MonoBehaviour {
+    public AudioClip clickSound;
     private GameObject clickObj;
 
     // Start 함수 앞에서 호출됨.
@@ -15,6 +16,7 @@ public class ObjectManager : MonoBehaviour {
     void Update () {
         if (Input.GetMouseButtonDown(0))
         {
+            AudioSource.PlayClipAtPoint(clickSound,transform.position, 10f);
             clickObj = GetClickedObject();
 
             if (clickObj.tag == "Preview")

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Jump : MonoBehaviour
 {
+    public AudioSource sound; // 점프 할때 소리
+
     float power = 1f;
     public float _power = 10f;
     private Animator anim;
@@ -35,6 +37,8 @@ public class Jump : MonoBehaviour
             //gameObject.GetComponent<EdgeCollider2D>().sharedMaterial.bounciness = power;
             //Debug.Log(power);
             anim.SetBool("isJumping", true);
+
+            sound.Play();
             obj.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * power, ForceMode2D.Impulse);
         }
     }
