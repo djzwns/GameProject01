@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class MainUI : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+        Screen.SetResolution(747, 420, false);
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 

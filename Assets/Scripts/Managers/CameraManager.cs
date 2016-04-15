@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class CameraManager : MonoBehaviour {
-
+    void Start()
+    {
+        Screen.SetResolution(747, 420, false);
+    }
     // 클릭된 위치에 있는 오브젝트를 반환해준다.
     public GameObject GetClickedObject()
     {
