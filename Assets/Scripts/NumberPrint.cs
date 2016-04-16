@@ -47,4 +47,12 @@ public class NumberPrint : MonoBehaviour {
         closeTime[0].sprite = number[timer.GetTime(2) / 10];
         closeTime[1].sprite = number[timer.GetTime(2) % 10];
     }
+
+    public void ResetTimePrint()
+    {
+        openTime[0].sprite = number[0]; // 10의자리
+        openTime[1].sprite = number[0]; // 1의 자리
+        closeTime[0].sprite = number[0];
+        closeTime[1].sprite = number[0];
+    }
 }
