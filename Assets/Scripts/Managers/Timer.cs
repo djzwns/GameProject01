@@ -145,4 +145,10 @@ public class Timer : MonoBehaviour {
         }
         return -1;
     }
+
+    public void ResetOpenCloseTime()
+    {
+        openTime = 0;
+        closeTime = 0;
+    }
 }

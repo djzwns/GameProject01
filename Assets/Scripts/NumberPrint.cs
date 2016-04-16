@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class NumberPrint : MonoBehaviour {
-    public Sprite[] number;
+    public Sprite[] number; // 스프라이트 0~9 불러옴
 
     Image[] currentTime;
     Image[] openTime;
