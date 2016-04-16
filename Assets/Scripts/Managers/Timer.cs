@@ -15,13 +15,13 @@ public class Timer : MonoBehaviour {
     public Scrollbar openTimer;     // 오픈 타이머
     public Scrollbar currentTimer;  // 현재 시간 타이머
 
-    public Text openTimeText;    // 개방시간을 출력해줄 gui text
-    public Text currentTimeText; // 시간을 출력해줄 gui text
-    public Text timeCycleText;   // 몇 번 초과 됐는지 출력
+    //public Text openTimeText;    // 개방시간을 출력해줄 gui text
+    //public Text currentTimeText; // 시간을 출력해줄 gui text
+    //public Text timeCycleText;   // 몇 번 초과 됐는지 출력
     // -------------------------------------------------------------------
 
     float currentTime;           // 현재 시간
-    int timeCycle;               // 시간 초과된 횟수
+    //int timeCycle;               // 시간 초과된 횟수
     bool soundPlay;              // 소리 재생되고 있는지.
     
     // Start함수, 모든 Awake함수의 호출 뒤에 실행 되는 함수로 호출 순서에 주의 해야함..
@@ -50,7 +50,7 @@ public class Timer : MonoBehaviour {
     void CountTime()
     {
         currentTime += Time.deltaTime;                           // 현재 시간 저장
-        currentTimeText.text = "현재 시간 : " + currentTime;
+        //currentTimeText.text = "현재 시간 : " + currentTime;
 
         currentTimer.value = currentTime / closeTime;            // 0~1의 값을 갖게 나눠줌
 
@@ -74,8 +74,8 @@ public class Timer : MonoBehaviour {
         // 시간이 초과되면 타임사이클 1회 증가시키고 리셋
         if (currentTimer.value >= 1)
         {
-            ++timeCycle;
-            timeCycleText.text = "초과된 횟수 : " + timeCycle;
+            //++timeCycle;
+            //timeCycleText.text = "초과된 횟수 : " + timeCycle;
             ResetTime();
         }
     }
@@ -84,7 +84,7 @@ public class Timer : MonoBehaviour {
     void ResetTime()
     {
         currentTime = 0;
-        currentTimeText.text = "현재 시간 : 0";
+        //currentTimeText.text = "현재 시간 : 0";
         currentTimer.value = 0;
     }
 
@@ -92,11 +92,11 @@ public class Timer : MonoBehaviour {
     void InitTime()
     {
         currentTime = 0;
-        currentTimeText.text = "현재 시간 : 0";
+        //currentTimeText.text = "현재 시간 : 0";
         currentTimer.value = 0;
 
-        timeCycle = 0;
-        timeCycleText.text = "초과된 횟수 : 0";
+        //timeCycle = 0;
+        //timeCycleText.text = "초과된 횟수 : 0";
 
         endPoint.SetActive(true);
     }
@@ -110,7 +110,7 @@ public class Timer : MonoBehaviour {
         // -------------------------------------------------------------------------
 
         // 기본 적인 스테이지 정보로 개방 시간을 출력해줌.
-        openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
+        //openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
         openTimer.value = openTime / closeTime;  // 시간 비율로 사이즈 잡아줌.
     }
 
@@ -126,8 +126,23 @@ public class Timer : MonoBehaviour {
         // -------------------------------------------------------------------------
 
         // 기본 적인 스테이지 정보로 개방 시간을 출력해줌.
-        openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
+        //openTimeText.text = "개방 시간 : " + openTime + " ~ " + closeTime;
         openTimer.value = openTime / closeTime;  // 시간 비율로 사이즈 잡아줌.
     }
 
+    // time  =  0 : current, 1 : open, 2 : close
+    // -1 은 매개변수 잘 못 쓴 거
+    public int GetTime( int time )
+    {
+        switch (time)
+        {
+            case 0:
+                return (int)currentTime;
+            case 1:
+                return (int)openTime;
+            case 2:
+                return (int)closeTime;
+        }
+        return -1;
+    }
 }
