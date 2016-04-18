@@ -75,7 +75,7 @@ public class ObjectUIManager : MonoBehaviour {
         {
             // 범위 초과시 포지션 고정
             if(objBox.transform.position.x <= -18.8f)
-                objBox.transform.position = new Vector3(-18.8f, 0f, -2.0f);
+                objBox.transform.position = new Vector3(-18.8f, 0f, -4.1f);
             else
                 objBox.transform.position += new Vector3(Time.deltaTime * (-speed), 0f, 0f);
         }
@@ -83,7 +83,7 @@ public class ObjectUIManager : MonoBehaviour {
         {
             // 범위 초과시 포지션 고정
             if(objBox.transform.position.x >= -5.8f)
-                objBox.transform.position = new Vector3(-5.8f, 0f, -2.0f);
+                objBox.transform.position = new Vector3(-5.8f, 0f, -4.1f);
             else
                 objBox.transform.position += new Vector3(Time.deltaTime * speed, 0f, 0f);
         }
