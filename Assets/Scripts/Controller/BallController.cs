@@ -8,9 +8,10 @@ public class BallController : MonoBehaviour {
 
     //public GameObject light;
     
-    int ballCount = 0;
+    //int ballCount = 0;
 
     void Awake () {
+        gameObject.SetActive(false);
         stageManager = GameObject.Find("GameManager").GetComponent<StageManager>();
         Init();
     }
@@ -59,21 +60,25 @@ public class BallController : MonoBehaviour {
     // 시작
     public void GamePlay()
     {
-        if (ballCount == 0)
-        {
-            ++ballCount;
-        }
+        //if (ballCount == 0)
+        //{
+        //    ++ballCount;
+        //}
+        startPoint = GameObject.Find("StartPoint");
+        gameObject.transform.position = startPoint.transform.position;
+        gameObject.SetActive(true);
     }
 
     // 리셋
     public void GameReset()
     {
         // 공이 1개 일때 파괴 후 카운트 감소
-        if (ballCount == 1)
-        {
+        //if (ballCount == 1)
+        //{
             Reset();
-            Destroy(gameObject);
-            --ballCount;
-        }
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
+        //    --ballCount;
+        //}
     }
 }

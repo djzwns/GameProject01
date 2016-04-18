@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class ObjectManager : MonoBehaviour {
     public AudioClip clickSound;
+    public CameraController camController;
     private GameObject clickObj;
 
     // Start 함수 앞에서 호출됨.
@@ -22,7 +23,8 @@ public class ObjectManager : MonoBehaviour {
             if (clickObj.tag == "Preview")
             {
                 // 오브젝트의 클론을 생성
-                CreateObject().GetComponent<ObjectController>().HoldObject();
+                camController.userObject = CreateObject();
+                camController.userObject.GetComponent<ObjectController>().HoldObject();
             }
         }
     }

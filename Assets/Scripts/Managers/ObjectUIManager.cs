@@ -17,7 +17,8 @@ public class ObjectUIManager : MonoBehaviour {
 
     // 마우스에 눌린 오브젝트
     private GameObject clickedObj;
-    private GameObject ball;
+
+    public GameObject ball;
 
 
     void Awake()
@@ -42,7 +43,7 @@ public class ObjectUIManager : MonoBehaviour {
         }
         if (isReset)
         {
-            if (ball != null)
+            //if (ball.activeSelf == true)
                 ball.GetComponent<BallController>().GameReset();
             cantClick.SetActive(false);
             CloseBox();
@@ -102,8 +103,10 @@ public class ObjectUIManager : MonoBehaviour {
     public void Play()
     {
         // 공이 없으면 새로 만들어줌
-        if (ball == null)
-            ball = Instantiate(pfBall);
+        //if (ball == null)
+        //    ball = Instantiate(pfBall);
+        //if (ball.activeSelf == false)
+        //    ball.SetActive(true);
         ball.GetComponent<BallController>().GamePlay();
         cantClick.SetActive(true);
         buttonClickCount = 0;
